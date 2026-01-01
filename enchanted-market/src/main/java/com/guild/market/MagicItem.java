@@ -1,3 +1,4 @@
+package com.guild.market;
 public class MagicItem {
     //instance variables
     private String name;
@@ -31,11 +32,15 @@ public class MagicItem {
 
     //getMagicPrice method
     public Double getMagicPrice() {
-        if (magicPrice < 0){
-            IllegalArgumentException e = new IllegalArgumentException("Price cannot be negative.");
-            throw e;
-        }
+        
         return magicPrice;
+    }
+
+    public void setMagicPrice(Double magicPrice) {
+        if (magicPrice != null && magicPrice < 0)  {
+            throw new IllegalArgumentException("Price cannot be negative!");
+        }
+        this.magicPrice = magicPrice;
     }
 
     //static method to get itemCount()
