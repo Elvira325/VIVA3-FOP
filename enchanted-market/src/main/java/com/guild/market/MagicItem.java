@@ -35,7 +35,7 @@ public class MagicItem {
     //5.itemCount is incremented
     public MagicItem(String name, Double magicPrice) {
         this.name = name;
-        this.magicPrice =(magicPrice != null) ? magicPrice : Double.NaN;//To avoid nullPointerException which will occur when Double -> double
+        setMagicPrice(magicPrice);//To avoid nullPointerException which will occur when Double -> double
         itemCount++;
     }
 
@@ -65,7 +65,9 @@ public class MagicItem {
         if (magicPrice != null && magicPrice < 0)  {
             throw new IllegalArgumentException("Price cannot be negative!");
         }
-        this.magicPrice = magicPrice;
+        // this.magicPrice = magicPrice;
+        //if magicPrice is null, set to NaN
+        this.magicPrice = (magicPrice != null) ? magicPrice : Double.NaN;
     }
 
     //static method to get itemCount()
